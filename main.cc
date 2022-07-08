@@ -217,18 +217,18 @@ int main(int argc, char* argv[]) {
   }
 
   if (cid == -1) {
-    cout << "no controllers connected" << endl;
+    cout << "No Controller Connected." << endl;
     std::cin.get();
     return 0;
   } else {
-    cout << "controller found" << endl;
+    cout << "Controller Found." << endl;
   }
 
   std::tuple<bool, HWND> window_result = get_holocure_window();
   HWND holocure_window = std::get<1>(window_result);
 
   if (!std::get<0>(window_result)) {
-    std::cout << "No Holocure Window Found" << endl;
+    std::cout << "No Holocure Window Found." << endl;
     std::cin.get();
     return 0;
   }
@@ -247,7 +247,7 @@ int main(int argc, char* argv[]) {
       if (!needs_reconnect) {
         std::cout << "\a";
         std::cout
-            << "No Controller is Connected Please Reconnect Your Controller."
+            << "No Controller is Connected. Please Connect Your Controller."
             << endl;
         escape.press();
         needs_reconnect = true;
@@ -255,7 +255,7 @@ int main(int argc, char* argv[]) {
       Sleep(50);
       continue;
     } else if (needs_reconnect) {
-      std::cout << "Controller Has Connected";
+      std::cout << "Controller Connected";
       needs_reconnect = false;
     }
     if (joy.wButtons & XINPUT_GAMEPAD_BACK) {
